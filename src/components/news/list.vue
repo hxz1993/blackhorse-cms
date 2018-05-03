@@ -2,7 +2,7 @@
   <div class="page">
     <ul class="mui-table-view">
     <li class="mui-table-view-cell mui-media" v-for="(v,i) in news" :key="i">
-        <router-link :to="'/list/datail/'+v.id">
+        <router-link :to="'/news/detail/'+v.id">
             <img class="mui-media-object mui-pull-left" :src="v.img_url">
             <div class="mui-media-body">
                 {{v.title}}
@@ -27,7 +27,7 @@ export default {
       url:'http://www.escook.cn:3000/api/getnewslist'
     }).then(res=>{
       if(res.data.status==0){
-        console.log(res.data.message)
+        // console.log(res.data.message)
         this.news=res.data.message
       }
       

@@ -3,6 +3,7 @@
     <mt-header fixed title="黑马19期">
       <mt-button icon="back" slot="left" v-if="$route.path!='/home'" @click="$router.go(-1)">返回</mt-button>
     </mt-header>
+		
     <router-view/>
 
     <nav class="mui-bar mui-bar-tab">
@@ -43,5 +44,6 @@ export default {
  }
  .page {
    padding-top:40px;
+	 padding-bottom: 50px;
  }
 </style>
