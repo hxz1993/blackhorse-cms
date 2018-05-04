@@ -59,7 +59,7 @@ export default {
     }).then(res=>{
       if(res.data.status==0){
         this.pics=res.data.message
-        console.log(res.data.message);
+        // console.log(res.data.message);
 
       }
     })

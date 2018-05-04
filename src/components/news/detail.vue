@@ -14,7 +14,7 @@
       </div>
 
       <div class="news-comment">
-        <comment></comment>
+        <comment :id="$route.params.id"></comment>
       </div>
     </div>
   </div>
@@ -30,6 +30,7 @@ export default {
       newsDetail:{}
     }
   },
+  
   created(){
     // alert(this.$route.params.id)
     axios({
