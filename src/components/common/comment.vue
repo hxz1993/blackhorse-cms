@@ -22,19 +22,21 @@
             </a>
         </li>
     </ul>
-    <mt-button plain  type="danger" size="large" @click="more">加载更多</mt-button>
+    <mt-button plain  type="danger" size="large" @click="more" v-show="showMoreBtn">加载更多</mt-button>
   </div>
 </template>
 
 <script>
 import axios from "axios"
 import dateformat from "../../filters/dateformat"
+import {Toast} from "mint-ui"
 export default {
   data(){
       return {
           content:'',
           currentPage:1,
-          commentList:[]
+          commentList:[],
+          showMoreBtn:true
       }
   },
  props:["id"],
@@ -49,6 +51,10 @@ export default {
           if(res.data.status==0){
             this.commentList.push(...res.data.message);
             // this.commentList = this.commentList.concat(res.data.message);
+            if (res.data.message.length == 0) {
+            this.showMoreBtn = false;
+            Toast("没有更多的数据了~");
+          }
 
           }
       })
