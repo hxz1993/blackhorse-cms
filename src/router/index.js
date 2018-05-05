@@ -59,11 +59,11 @@ export default new Router({
     },
     //图片
     {
-      path: "/pics",
+      path: "/pics/:id",
       component: PicList
     },
     {
-      path: "/pics/detail",
+      path: "/pics/detail/:id",
       component: PicDetail
     },
   ]

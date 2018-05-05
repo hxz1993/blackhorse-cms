@@ -14,7 +14,7 @@
         </router-link>
     </li>
     <li class="mui-table-view-cell mui-media mui-col-xs-6">
-        <router-link to="/pics">
+        <router-link to="/pics/0">
           <img class="mui-media-object" src="../../assets/images/menu2.png">
           <div class="mui-media-body">图片分享</div>
         </router-link>
