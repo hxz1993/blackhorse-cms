@@ -2,7 +2,7 @@
   <div class="page bgc">
     <ul class="mui-clearfix  goods">
       <li v-for="(v,i) in goodsList" :key="i">
-        <a href="#">
+        <a :href="'#/goods/detail/'+v.id">
           <div class="pic">
             <img :src="v.img_url" alt="">
           </div>
@@ -22,27 +22,50 @@
       
       
     </ul>
+    <mt-button plain  type="danger" size="large" @click="more" v-show="showMoreBtn">加载更多</mt-button>
+
   </div>
 </template>
 <script>
 import axios from "axios"
+import {Toast} from "mint-ui"
+
 export default {
   data(){
     return {
       goodsList:[],
-      currentPage:1
+      currentPage:1,
+      showMoreBtn:true
     }
   },
   created(){
-    axios({
-      url:'http://www.escook.cn:3000/api/getgoods?pageindex=1'
+   this.getGoods();
+  },
+  methods:{
+    getGoods(){
+       axios({
+      url:'http://www.escook.cn:3000/api/getgoods?pageindex='+this.currentPage
     }).then(res=>{
-      if(res.data.status==0){}
-      this.goodsList=res.data.message;
-      console.log(res.data.message)
+      
+      if(res.data.status==0){
+        this.goodsList.push(...res.data.message);
+        // console.log(res.data.message)
+        if(res.data.message.length==0){
+          this.showMoreBtn=false;
+          Toast("没有更多的数据了~");
+        }
+
+      }
+      
     })
+    },
+    more(){
+      this.currentPage++;
+      this.getGoods()
+    }
   }
 }
+
 </script>
 <style scoped>
   .goods {

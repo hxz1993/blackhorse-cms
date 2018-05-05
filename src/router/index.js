@@ -8,12 +8,16 @@ import Search from '@/components/tabbar/search'
 
 import GoodsList from '@/components/goods/list'
 import GoodDetail from '@/components/goods/detail'
+import GoodsComment from '@/components/goods/comment'
+import GoodsDes from '@/components/goods/des'
+
 
 import NewsList from '@/components/news/list'
 import NewsDetail from '@/components/news/detail'
 
 import PicList from '@/components/pictures/list'
 import PicDetail from '@/components/pictures/detail'
+
 
 Vue.use(Router)
 
@@ -45,9 +49,18 @@ export default new Router({
       component: GoodsList
     },
     {
-      path: "/goods/detail",
+      path: "/goods/detail/:id",
       component: GoodDetail
     },
+    {
+      path: "/goods/comment/:id",
+      component: GoodsComment
+    },
+    {
+      path: "/goods/des/:id",
+      component: GoodsDes
+    },
+
     //新闻
     {
       path: "/news",
