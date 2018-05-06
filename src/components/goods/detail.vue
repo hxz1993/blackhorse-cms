@@ -106,7 +106,10 @@ export default {
     },
     addToCart(){
       this.isShowBall = true;
-
+      this.$store.commit("addToCarts",{
+        id:this.$route.params.id,
+        count:this.count
+      })
     },
    
   },

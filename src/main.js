@@ -17,26 +17,12 @@ import "./assets/mui/css/icons-extra.css"
 
 import VuePreview from 'vue-preview'
 
-import Vuex from "vuex"
-Vue.use(Vuex)
+import store from './store/index'
 
 // defalut install
 Vue.use(VuePreview)
 
-const store = new Vuex.Store({
-  state: {
-    cart: [],
-  },
-  getters: {
-    totalCount :state=> {
-      var result =0;
-      state.cart.forEach(v=>{
-        result += v.count;
-      })
-      return result;
-    }
-  }
-})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
